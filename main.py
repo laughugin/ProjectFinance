@@ -1,2 +1,2 @@
 #include <iostream>
-print("v pizdu")
+print("v pizdu tebia nahuy")
