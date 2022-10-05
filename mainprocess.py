@@ -9,7 +9,7 @@ def WindowStart():
     window.title("Finance Pro")
     window.iconbitmap(r"ProjectFinance\pics\taskbaricon.ico")
     window.configure(width = window.winfo_screenwidth()-10, height = window.winfo_screenheight()-80)
-    window.configure(bg='black')
+    window.configure(bg='darkblue')
 
     # move window center
     winWidth = window.winfo_reqwidth()
