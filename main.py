@@ -1,4 +1,1 @@
-#start
-
-print ("hello ")
-##whyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
+print("v pizdu")
