@@ -46,3 +46,4 @@ while 1:
             k[i] = 0
         i = i + 1
     time.sleep(0.15)
+    #huy sosi
