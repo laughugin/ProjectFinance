@@ -47,3 +47,4 @@ while 1:
         i = i + 1
     time.sleep(0.15)
     print("!!!!!")
+    print("fdjs;lkaflaj")
