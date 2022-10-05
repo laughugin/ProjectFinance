@@ -1,34 +1,59 @@
 
+from email.mime import image
 import tkinter as tk
 from tkinter import ttk
 from tkinter.messagebox import showinfo
-from turtle import position
+from turtle import heading
 
-class Window(tk.Tk):    
+class Window(tk.Tk):  
+      
+
+    
 
     def __init__(self):
         super().__init__()
 
+        self.Label = tk.Label(self, text='F.I.N.A.N.C.E.', bg='grey23', font=("Helvetica",36,"bold"))
+        self.button0 = tk.Button(self, state='disabled', fg='white', bd=10, activebackground='white', activeforeground='black', text=None, command=None, font=("Helvetica",20,"bold"), bg='grey23', relief='flat')
+        self.button1 = tk.Button(self, state='disabled', fg='white', bd=10, activebackground='white', activeforeground='black', text=None, command=None, font=("Helvetica",20,"bold"), bg='grey23', relief='flat')
+        self.button2 = tk.Button(self, state='disabled', fg='white', bd=10, activebackground='white', activeforeground='black', text=None, command=None, font=("Helvetica",20,"bold"), bg='grey23', relief='flat')
+        self.button3 = tk.Button(self, state='disabled', fg='white', bd=10, activebackground='white', activeforeground='black', text=None, command=None, font=("Helvetica",20,"bold"), bg='grey23', relief='flat')
+        self.button4 = tk.Button(self, state='disabled', fg='white', bd=10, activebackground='white', activeforeground='black', text=None, command=None, font=("Helvetica",20,"bold"), bg='grey23', relief='flat')
+
         #configuration
         self.title("Finance Pro")
         self.iconbitmap(r"ProjectFinance\pics\taskbaricon.ico")
-        self.geometry('200x200')
-        self.configure(bg='black')
+        self.geometry('1000x700')
+        self.configure(bg='grey23')
 
-        # move self center
-        winWidth = self.winfo_reqwidth()
-        winwHeight = self.winfo_reqheight()
-        posRight = int(self.winfo_screenwidth() / 2 - winWidth / 2 - 10)
-        posDown = int(self.winfo_screenheight() / 2 - winwHeight / 2 - 40)
-        self.geometry("+{}+{}".format(posRight, posDown))
+        self.Label.pack(pady=100)
 
-        self.button = ttk.Button(self, text='Press me', height=5, weight=30)
-        self.button['command'] = self.button_clicked
-        self.button
-        self.button.pack()
 
-    def button_clicked(self):
-        showinfo(title = 'Test completed', message='You are gay')
+        self.button0.pack(pady=25)
+        self.button1.pack(pady=10)
+        self.button2.pack(pady=10)
+        self.button3.pack(pady=10)
+        self.button4.pack(pady=10)
+
+        self.button0.config(state='active', command=self.Start, text='Start')
+        self.button1.config(state='active', command=self.Settings, text='Settings')
+        self.button2.config(state='active', command=self.Exit, text='Exit')
+        
+
+    def Start(self):
+        self.Label.config(image=r'ProjectFinance\pics\Soon.jpg')
+    
+    def Settings(self):
+        return 0
+
+
+
+
+    def Back(self):
+        return 0
+
+    def Exit(self):
+        self.quit()
 
 
 
