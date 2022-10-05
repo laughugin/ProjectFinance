@@ -1,9 +1,5 @@
 
-from email.mime import image
 import tkinter as tk
-from tkinter import ttk
-from tkinter.messagebox import showinfo
-from turtle import heading
 
 class Window(tk.Tk):  
       
@@ -14,11 +10,11 @@ class Window(tk.Tk):
         super().__init__()
 
         self.Label = tk.Label(self, text='F.I.N.A.N.C.E.', bg='grey23', font=("Helvetica",36,"bold"))
-        self.button0 = tk.Button(self, state='disabled', fg='white', bd=10, activebackground='white', activeforeground='black', text=None, command=None, font=("Helvetica",20,"bold"), bg='grey23', relief='flat')
-        self.button1 = tk.Button(self, state='disabled', fg='white', bd=10, activebackground='white', activeforeground='black', text=None, command=None, font=("Helvetica",20,"bold"), bg='grey23', relief='flat')
-        self.button2 = tk.Button(self, state='disabled', fg='white', bd=10, activebackground='white', activeforeground='black', text=None, command=None, font=("Helvetica",20,"bold"), bg='grey23', relief='flat')
-        self.button3 = tk.Button(self, state='disabled', fg='white', bd=10, activebackground='white', activeforeground='black', text=None, command=None, font=("Helvetica",20,"bold"), bg='grey23', relief='flat')
-        self.button4 = tk.Button(self, state='disabled', fg='white', bd=10, activebackground='white', activeforeground='black', text=None, command=None, font=("Helvetica",20,"bold"), bg='grey23', relief='flat')
+        self.button0 = tk.Button(self, state='disabled', activebackground='grey23', activeforeground='white', fg='white', bd=0, text=None, command=None, font=("Helvetica",20,"bold"), bg='grey23', relief='flat')
+        self.button1 = tk.Button(self, state='disabled', activebackground='grey23', activeforeground='white', fg='white', bd=0, text=None, command=None, font=("Helvetica",20,"bold"), bg='grey23', relief='flat')
+        self.button2 = tk.Button(self, state='disabled', activebackground='grey23', activeforeground='white', fg='white', bd=0, text=None, command=None, font=("Helvetica",20,"bold"), bg='grey23', relief='flat')
+        self.button3 = tk.Button(self, state='disabled', activebackground='grey23', activeforeground='white', fg='white', bd=0, text=None, command=None, font=("Helvetica",20,"bold"), bg='grey23', relief='flat')
+        self.button4 = tk.Button(self, state='disabled', activebackground='grey23', activeforeground='white', fg='white', bd=0, text=None, command=None, font=("Helvetica",20,"bold"), bg='grey23', relief='flat')
 
         #configuration
         self.title("Finance Pro")
@@ -28,6 +24,9 @@ class Window(tk.Tk):
 
         self.Label.pack(pady=100)
 
+        self.button0.config(state='active', command=self.Start, text='Start')
+        self.button1.config(state='active', command=self.Settings, text='Settings')
+        self.button2.config(state='active', command=self.Exit, text='Exit')
 
         self.button0.pack(pady=25)
         self.button1.pack(pady=10)
@@ -35,13 +34,11 @@ class Window(tk.Tk):
         self.button3.pack(pady=10)
         self.button4.pack(pady=10)
 
-        self.button0.config(state='active', command=self.Start, text='Start')
-        self.button1.config(state='active', command=self.Settings, text='Settings')
-        self.button2.config(state='active', command=self.Exit, text='Exit')
         
 
     def Start(self):
-        self.Label.config(image=r'ProjectFinance\pics\Soon.jpg')
+        self.Image = tk.PhotoImage(file=r"ProjectFinance\pics\Soon.png")
+        self.Label.config(image=self.Image)
     
     def Settings(self):
         return 0
