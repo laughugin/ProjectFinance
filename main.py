@@ -1,3 +1,5 @@
 import mainprocess
+import window
 
-mainprocess.WindowStart()
+wnd = window.Window()
+wnd.mainloop()
