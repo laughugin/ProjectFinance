@@ -1,3 +1,5 @@
+import time
+
 
 def get_back(x,y):
     print("\033[%d;%dH" % (x, y))
@@ -43,3 +45,4 @@ while 1:
         else:
             k[i] = 0
         i = i + 1
+    time.sleep(0.15)
