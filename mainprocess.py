@@ -7,7 +7,7 @@ def WindowStart():
     window = Tk()
 
     window.title("Finance Pro")
-    window.iconbitmap(r"ProjectFinance\ProjectFinance\pics\taskbaricon.ico")
+    window.iconbitmap(r"ProjectFinance\pics\taskbaricon.ico")
     window.configure(width = window.winfo_screenwidth()-10, height = window.winfo_screenheight()-80)
     window.configure(bg='black')
 
