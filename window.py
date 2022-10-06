@@ -1,11 +1,11 @@
-
+import mainprocess
 import tkinter as tk
 
 class Window(tk.Tk):  
     
     
-    global compl
-    compl = 1
+    global complexity
+    complexity = 1
 
     def __init__(self):
         super().__init__()
@@ -13,7 +13,7 @@ class Window(tk.Tk):
         
         
 
-        self.Label = tk.Label(self, text='F.I.N.A.N.C.E.', bg='grey23', font=("Helvetica",36,"bold"))
+        self.Label = tk.Label(self, text='F.I.N.A.N.C.E.', bg='grey23', font=("Console",36,"bold"))
         self.button0 = tk.Button(self, state='disabled', activebackground='grey23', activeforeground='white', fg='white', bd=0, text=None, command=None, font=("Helvetica",20,"bold"), bg='grey23', relief='flat')
         self.button1 = tk.Button(self, state='disabled', activebackground='grey23', activeforeground='white', fg='white', bd=0, text=None, command=None, font=("Helvetica",20,"bold"), bg='grey23', relief='flat')
         self.button2 = tk.Button(self, state='disabled', activebackground='grey23', activeforeground='white', fg='white', bd=0, text=None, command=None, font=("Helvetica",20,"bold"), bg='grey23', relief='flat')
@@ -54,25 +54,23 @@ class Window(tk.Tk):
         self.button1.config(state='disabled', command=None, text=' ')
         self.button2.config(state='active', command=self.Back, text='Back')
         self.button0.config(state='active', command=self.ChangeComplexity)
-        if compl == 0:
+        if complexity == 0:
             self.button0.config(text='Easy')
-        elif compl == 1:                   
+        elif complexity == 1:                   
             self.button0.config(text='Medium')
         else:                                    
             self.button0.config(text='Hard')
             
     def ChangeComplexity(self):
-        global compl
-        comp = compl
-        if comp < 2:
-            comp += 1
+        global complexity
+        if complexity < 2:
+            complexity += 1
         else:
-            comp = 0
-        compl = comp
+            complexity = 0
 
-        if compl == 0:
+        if complexity == 0:
             self.button0.config(text='Easy')
-        elif compl == 1:                   
+        elif complexity == 1:                   
             self.button0.config(text='Medium')
         else:                                    
             self.button0.config(text='Hard')
