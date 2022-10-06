@@ -2,12 +2,16 @@
 import tkinter as tk
 
 class Window(tk.Tk):  
-      
-
     
+    
+    global compl
+    compl = 1
 
     def __init__(self):
         super().__init__()
+
+        
+        
 
         self.Label = tk.Label(self, text='F.I.N.A.N.C.E.', bg='grey23', font=("Helvetica",36,"bold"))
         self.button0 = tk.Button(self, state='disabled', activebackground='grey23', activeforeground='white', fg='white', bd=0, text=None, command=None, font=("Helvetica",20,"bold"), bg='grey23', relief='flat')
@@ -15,6 +19,12 @@ class Window(tk.Tk):
         self.button2 = tk.Button(self, state='disabled', activebackground='grey23', activeforeground='white', fg='white', bd=0, text=None, command=None, font=("Helvetica",20,"bold"), bg='grey23', relief='flat')
         self.button3 = tk.Button(self, state='disabled', activebackground='grey23', activeforeground='white', fg='white', bd=0, text=None, command=None, font=("Helvetica",20,"bold"), bg='grey23', relief='flat')
         self.button4 = tk.Button(self, state='disabled', activebackground='grey23', activeforeground='white', fg='white', bd=0, text=None, command=None, font=("Helvetica",20,"bold"), bg='grey23', relief='flat')
+
+        global MainMenu
+        def MainMenu():
+            self.button0.config(state='active', command=self.Start, text='Start')
+            self.button1.config(state='active', command=self.Settings, text='Settings')
+            self.button2.config(state='active', command=self.Exit, text='Exit')
 
         #configuration
         self.title("Finance Pro")
@@ -24,9 +34,7 @@ class Window(tk.Tk):
 
         self.Label.pack(pady=100)
 
-        self.button0.config(state='active', command=self.Start, text='Start')
-        self.button1.config(state='active', command=self.Settings, text='Settings')
-        self.button2.config(state='active', command=self.Exit, text='Exit')
+        MainMenu()
 
         self.button0.pack(pady=25)
         self.button1.pack(pady=10)
@@ -34,20 +42,43 @@ class Window(tk.Tk):
         self.button3.pack(pady=10)
         self.button4.pack(pady=10)
 
-        
+    
 
     def Start(self):
         self.Image = tk.PhotoImage(file=r"ProjectFinance\pics\Soon.png")
         self.Label.config(image=self.Image)
     
+    
+
     def Settings(self):
-        return 0
+        self.button1.config(state='disabled', command=None, text=' ')
+        self.button2.config(state='active', command=self.Back, text='Back')
+        self.button0.config(state='active', command=self.ChangeComplexity)
+        if compl == 0:
+            self.button0.config(text='Easy')
+        elif compl == 1:                   
+            self.button0.config(text='Medium')
+        else:                                    
+            self.button0.config(text='Hard')
+            
+    def ChangeComplexity(self):
+        global compl
+        comp = compl
+        if comp < 2:
+            comp += 1
+        else:
+            comp = 0
+        compl = comp
 
-
-
+        if compl == 0:
+            self.button0.config(text='Easy')
+        elif compl == 1:                   
+            self.button0.config(text='Medium')
+        else:                                    
+            self.button0.config(text='Hard')
 
     def Back(self):
-        return 0
+        MainMenu()
 
     def Exit(self):
         self.quit()
