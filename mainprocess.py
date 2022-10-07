@@ -1,8 +1,17 @@
+import random
 
+class Point():
+    x = 0
+    y = 0
+
+class Line():
+    A = Point()
+    B = Point()
+    
 class ProcessData():
-    x = ' MOTHERFUCKER'
+    GraphChange = Line()
 
 
 def MainProcess():
-    a = ProcessData()
-    print("hello"+a.x)
+    
+
