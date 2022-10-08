@@ -30,7 +30,7 @@ y_stretch = 5
 y_gap = 0
 # stretch enough to get all data items in
 x_stretch = 3
-x_width = 3
+x_width = 2
 # gap between left canvas edge and y axis
 x_gap = 5
 
