@@ -45,12 +45,24 @@ def MainProcess():
     DirectionData = open('ProjectFinance\Data\GraphDirectionData.txt', 'r')
     temp = DirectionData.read()
     Direction = temp.split('/')
-    if Direction[0] == 0:
-        LastLine = Line()
-        LastLine = LastLine.load(19)
+    StepsToNextPoint = int(Direction[0])
+    NextPoint_y = int(Direction[1])
+    LastLine = Line()
+    LastLine = LastLine.load(19)
+    if int(Direction[0]) == 0:
         MaxChange = int(LastLine.B_y/100*20)
         NextPoint_y = LastLine.B_y + random.randrange(-MaxChange, MaxChange)
         StepsToNextPoint = random.randrange(1, 4)
+    NextLine = Line()
+    NextLine.A_y = LastLine.B_y
+    NextLine.B_y = LastLine.B_y + int((NextPoint_y - LastLine.B_y)/StepsToNextPoint)
+    NextLine.save()
+    DirectionData = open('ProjectFinance\Data\GraphDirectionData.txt', 'w')
+    temp = str(StepsToNextPoint - 1) + '/' + str(NextPoint_y) + '/'
+    DirectionData.write(temp)
+    DirectionData.close()
+
+
 
     
 
