@@ -37,8 +37,26 @@ class Line():
 
 
     
-class ProcessData():
-    GraphChange = Line()
+class AccountData():
+    Money = 0
+    Share = 0
+
+    def load(self):
+        Data = open('ProjectFinance\Data\AccountData.txt', 'r')
+        temp = Data.read()
+        inpt = temp.split('/')
+        self.Money = int(inpt[0])
+        self.Share = int(inpt[1])
+        Data.close()
+
+    def save(self):
+        Data = open('ProjectFinance\Data\AccountData.txt', 'w')
+        temp = str(self.Money) + '/' + str(self.Share) + '/'
+        Data.write(temp)
+        Data.close()
+
+    
+        
 
 
 def MainProcess():
@@ -61,6 +79,42 @@ def MainProcess():
     temp = str(StepsToNextPoint - 1) + '/' + str(NextPoint_y) + '/'
     DirectionData.write(temp)
     DirectionData.close()
+
+def Buy(Amount):
+    Account = AccountData()
+    Account.load()
+    DirectionData = open('ProjectFinance\Data\GraphDirectionData.txt', 'r')
+    temp = DirectionData.read()
+    Data = temp.split('/')
+    ChangeRate = int(Data[1])
+    Price = ChangeRate * Amount
+    if Price > Account.Money:
+        return -1
+    Account.Money -= Price
+    Account.Share += Amount
+    Account.save()
+    DirectionData.close()
+    
+
+def Sell(Amount):
+    Account = AccountData()
+    Account.load()
+    DirectionData = open('ProjectFinance\Data\GraphDirectionData.txt', 'r')
+    temp = DirectionData.read()
+    Data = temp.split('/')
+    ChangeRate = int(Data[1])
+    Price = ChangeRate * Amount
+    if Amount > Account.Share:
+        return -1
+    Account.Money += Price
+    Account.Share -= Amount
+    Account.save()
+    DirectionData.close()
+
+
+
+
+
 
 
 

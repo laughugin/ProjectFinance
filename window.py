@@ -1,4 +1,6 @@
 from turtle import back
+
+from pip import main
 import mainprocess
 import tkinter as tk
 
@@ -26,11 +28,11 @@ class Window(tk.Tk):
 
         global MainMenu
         def MainMenu():
-            self.button0.config(state='active', command=self.Start, text='Start')
-            self.button1.config(state='active', command=self.Settings, text='Settings')
-            self.button2.config(state='active', command=self.Exit, text='Exit')
-            self.button3.config(state='disabled', command=None, text='')
-            self.button4.config(state='disabled', command=None, text='')
+            self.button0.configure(state='active', command=self.Start, text='Start')
+            #self.button1.configure(state='active', command=self.Settings, text='Settings')
+            #self.button2.configure(state='active', command=self.Exit, text='Exit')
+            self.button3.configure(state='disabled', command=None, text='')
+            self.button4.configure(state='disabled', command=None, text='')
 
         #configuration
         self.title("Finance Pro")
@@ -59,24 +61,31 @@ class Window(tk.Tk):
     def Start(self):
         # self.Image = tk.PhotoImage(file=r"ProjectFinance\pics\Soon.png")
         # self.Label.config(image=self.Image)
-        self.button0.config(state='active', command=mainprocess.MainProcess, text='Google')
-        self.button1.config(state='disabled', command=None, text='Coming soon!')
-        self.button2.config(state='disabled', command=None, text='')
-        self.button4.config(state='active', command=self.Back, text='Back')
+        self.button0.configure(state='active', command=mainprocess.MainProcess, text='Google')
+        self.button2.configure(state='disabled', command=None, text='Coming soon!')
+        self.button1.configure(state='active', command=self.AskBuy, text='Buy')
+        self.button3.configure(state='active', command=self.AskSell, text='Sale')
+        self.button4.configure(state='active', command=self.Back, text='Back')
 
-    
-    
+    def AskBuy(self):
+        mainprocess.Buy(100)
+        
+
+
+    def AskSell(self):
+        mainprocess.Sell(100)
+
 
     def Settings(self):
-        self.button1.config(state='disabled', command=None, text='')
-        self.button2.config(state='active', command=self.Back, text='Back')
-        self.button0.config(state='active', command=self.ChangeComplexity)
+        self.button1.configure(state='disabled', command=None, text='')
+        self.button2.configure(state='active', command=self.Back, text='Back')
+        self.button0.configure(state='active', command=self.ChangeComplexity)
         if complexity == 0:
-            self.button0.config(text='Easy')
+            self.button0.configure(text='Easy')
         elif complexity == 1:                   
-            self.button0.config(text='Medium')
+            self.button0.configure(text='Medium')
         else:                                    
-            self.button0.config(text='Hard')
+            self.button0.configure(text='Hard')
             
     def ChangeComplexity(self):
         global complexity
@@ -86,11 +95,11 @@ class Window(tk.Tk):
             complexity = 0
 
         if complexity == 0:
-            self.button0.config(text='Easy')
+            self.button0.configure(text='Easy')
         elif complexity == 1:                   
-            self.button0.config(text='Medium')
+            self.button0.configure(text='Medium')
         else:                                    
-            self.button0.config(text='Hard')
+            self.button0.configure(text='Hard')
 
     def Back(self):
         MainMenu()
