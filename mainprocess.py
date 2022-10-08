@@ -13,5 +13,5 @@ class ProcessData():
 
 
 def MainProcess():
-    
-
+    Data = ProcessData()
+    Data.GraphChange.A.x = i
