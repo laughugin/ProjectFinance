@@ -1,4 +1,6 @@
 import random
+import tkinter
+import tkinter.messagebox as huila
 
 global Time
 Time = 0
@@ -69,7 +71,9 @@ def MainProcess():
     LastLine = LastLine.load(19)
     if int(Direction[0]) == 0:
         MaxChange = int(LastLine.B_y/100*20)
-        NextPoint_y = LastLine.B_y + random.randrange(-MaxChange, MaxChange)
+        NextPoint_y = LastLine.B_y + random.randrange(-30, 30)
+        if NextPoint_y < 0:
+            NextPoint_y = LastLine.B_y + random.randrange(30, 40)
         StepsToNextPoint = random.randrange(1, 4)
     NextLine = Line()
     NextLine.A_y = LastLine.B_y
@@ -87,13 +91,14 @@ def Buy(Amount):
     temp = DirectionData.read()
     Data = temp.split('/')
     ChangeRate = int(Data[1])
-    Price = ChangeRate * Amount
+    Price = ChangeRate * int(Amount)
     if Price > Account.Money:
-        return -1
-    Account.Money -= Price
-    Account.Share += Amount
-    Account.save()
-    DirectionData.close()
+        huila.showerror(title="Not enough money", message="Not enough money")
+    else:
+        Account.Money -= Price
+        Account.Share += int(Amount)
+        Account.save()
+        DirectionData.close()
     
 
 def Sell(Amount):
@@ -103,13 +108,16 @@ def Sell(Amount):
     temp = DirectionData.read()
     Data = temp.split('/')
     ChangeRate = int(Data[1])
-    Price = ChangeRate * Amount
-    if Amount > Account.Share:
-        return -1
-    Account.Money += Price
-    Account.Share -= Amount
-    Account.save()
-    DirectionData.close()
+    Price = ChangeRate * int(Amount)
+    if int(Amount) > Account.Share:
+        pass
+    else:
+        Account.Money += Price
+        Account.Share -= int(Amount)
+        Account.save()
+        DirectionData.close()
+
+
 
 
 
