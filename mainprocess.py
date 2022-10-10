@@ -2,9 +2,9 @@ import random
 import tkinter
 import tkinter.messagebox as huila
 
-global Time
-Time = 0
-
+class Point():
+    x = 0
+    y = 0
 
 class Line():
     A_y = 0
@@ -116,15 +116,3 @@ def Sell(Amount):
         Account.Share -= int(Amount)
         Account.save()
         DirectionData.close()
-
-
-
-
-
-
-
-
-
-
-    
-
